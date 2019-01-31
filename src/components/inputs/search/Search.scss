@@ -1,0 +1,19 @@
+.search-container {
+  display: flex;
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.search-icon {
+  padding: 0.5rem;
+}
+
+.search-field {
+  border: 0;
+  padding: 0.5rem 0.5rem 0.5rem 0;
+  flex: 1;
+  outline: none;
+}
