@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import './App.scss';
-import Search from './components/inputs/search/Search'
+import Navbar from './components/navbar/Navbar';
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <Search />
+        <Navbar />
       </div>
     );
   }
 }
-
-export default App;
