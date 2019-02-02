@@ -1,0 +1,13 @@
+footer {
+  margin: 20px auto 0 auto;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2rem;
+
+  @media (min-width: 600px) {
+    flex-direction: row; 
+    justify-content: space-between;
+    align-items: center;
+  }
+}
