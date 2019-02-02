@@ -1,7 +1,9 @@
 .logo-container {
-  align-self: center;
-}
-
-.title {
-  margin: 0;
+  a {
+    outline: none;
+    text-decoration: none;
+    &:visited {
+      color: black;
+    }
+  }
 }

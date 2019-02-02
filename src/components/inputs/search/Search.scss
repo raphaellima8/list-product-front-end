@@ -3,16 +3,20 @@
   border: 1px solid #ccc;
   border-radius: 15px;
   overflow: hidden;
-  width: 100%;
   align-self: center;
-}
+  width: 10rem;
+  
+  @media (min-width: 600px) {
+    width: 30rem;
+  }
 
-.search-icon {
-  padding: 0.5rem;
-}
+  i.fa-search {
+    padding: 0.5rem;
+  }
 
-.search-field {
-  border: 0;
-  padding: 0.5rem 0.5rem 0.5rem 0;
-  outline: none;
+  input[type="search"] {
+    border: 0;
+    padding: 0.5rem 0.5rem 0.5rem 0;
+    outline: none;
+  }
 }
