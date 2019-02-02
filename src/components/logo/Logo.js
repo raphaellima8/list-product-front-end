@@ -13,7 +13,9 @@ export default class Logo extends Component {
   render() {
     return (
       <div className="logo-container">
-        <Title text={this.state.title} />
+        <a href="/">
+          <Title text={this.state.title} />
+        </a>
       </div>
     );
   }

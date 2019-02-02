@@ -1,22 +1,9 @@
 import React, { Component } from 'react';
+import './Title.scss';
 
 export default class Title extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      title: null
-    }
-  }
-
-  componentDidMount() {
-    this.setState({ title: this.props.text });
-  }
-
   render() {
-    const style = {
-      margin: 0
-    }
-    return <h1 style={ style }>{ this.state.title }</h1>;
+    return <h1>{ this.props.text }</h1>;
   }
 }
