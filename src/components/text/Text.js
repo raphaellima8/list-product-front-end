@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import './Text.scss';
 
 export default class Text extends Component {
 
   render() {
-    return <p>{ this.props.text }</p>;
+    return <p className="text-component">{ this.props.text }</p>;
   }
 }

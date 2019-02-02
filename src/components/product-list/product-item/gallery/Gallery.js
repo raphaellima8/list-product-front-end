@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Gallery.scss';
-import Thumbnail from '../../thumbnail/Thumbnail';
+import Thumbnail from '../../../thumbnail/Thumbnail';
 
 export default class Gallery extends Component {
   render() {
