@@ -22,4 +22,20 @@
       color: gray;
     }
   }
+
+  .product__price-container {
+    > p {
+      display: inline-block;
+      margin-right: .4rem;
+      color: grey;  
+    }
+    
+    .product__price {
+      text-decoration-line: line-through;
+    }
+
+    .product__promotional-price {
+      color: black;
+    }
+  }
 }
