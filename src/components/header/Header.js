@@ -8,7 +8,7 @@ class Header extends Component {
     return (
       <header>
         <Logo />
-        <Search />
+        <Search searchFn={this.props.search}/>
       </header>
     );
   }

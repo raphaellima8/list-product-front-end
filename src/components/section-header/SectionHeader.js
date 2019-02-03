@@ -3,20 +3,27 @@ import './SectionHeader.scss';
 
 export default class SectionHeader extends Component {
  
-  static defaultProps = {
-    text: 'Lista de produtos'
-  };
+  state = {
+    defaultText: 'Lista de produtos',
+    title: ''
+  }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: this.props.text
+  componentWillReceiveProps(props) {
+    const { newText } = this.props;
+    if (props.newText !== newText) {
+      this.setState({ title: props.newText})
     }
   }
+
+  renderText() {
+    const { defaultText, title } = this.state;
+    return title === '' ? defaultText : title;
+  }
+
   render() {
     return (
       <div className="section-header-container">
-        <h2>{ this.state.text }</h2>
+        <h2>{ this.renderText() }</h2>
       </div>
     );
   }

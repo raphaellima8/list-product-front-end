@@ -10,13 +10,20 @@
     width: 30rem;
   }
 
-  i.fa-search {
-    padding: 0.5rem;
-  }
-
-  input[type="search"] {
-    border: 0;
-    padding: 0.5rem 0.5rem 0.5rem 0;
-    outline: none;
+  form {
+    &.search__form {
+      display: flex;
+      align-items: baseline;
+      
+      i.fa-search {
+        padding: 0.5rem;
+      }
+    
+      input[type="search"] {
+        border: 0;
+        padding: 0.5rem 0.5rem 0.5rem 0;
+        outline: none;
+      }
+    }
   }
 }
