@@ -8,18 +8,24 @@ div {
       width: 100%;
       padding: 0;
       display: flex;
-      justify-content: space-between;
-      li {
-        button {
-          border: none;
-          background: none;
-          outline: none;
-        };
-        display: inline;
-        list-style-type: none;
+      justify-content: center;
+      button {
+        &:not(:last-child) {
+          margin-right: 1rem;
+        }
         padding: .9rem;
         border: 0.5px solid lightgray;
         border-radius: .5rem;
+        background: transparent;
+        outline: none;
+        &.disabled {
+          pointer-events: none;
+          opacity: 0.5;
+          border: 0.5px solid lightgray;
+          border-radius: .5rem;
+          outline: none;
+          background: lightgray;
+        }
       }
     }
   
@@ -28,20 +34,20 @@ div {
       margin-top: 0;
       justify-content: flex-end;
       width: min-content;
-      height: 1.5rem;
       ul {
         margin: 0 1rem;
         width: min-content;
-        li {
-          // padding: .5rem 1.3rem;
+        button {
+          box-sizing: border-box;
           border: none;
-          &:hover, &:active {
+          &:hover:not(.disabled) {
             border: 0.5px solid lightgray;
             border-radius: .5rem;
-            box-shadow: none;
-            text-shadow: unset;
-            outline: 0px solid transparent;
+            outline: none;
             cursor: pointer;
+          }
+          &.disabled {
+            background: transparent;
           }
         }
       }

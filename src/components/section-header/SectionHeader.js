@@ -12,12 +12,6 @@ export default class SectionHeader extends Component {
     this.setState({ title });
   }
 
-  renderText() {
-    const { defaultText, title } = this.state;
-    console.log(defaultText, title)
-    return !!title ? defaultText : title;
-  }
-
   render() {
     return (
       <div className="section-header-container">
