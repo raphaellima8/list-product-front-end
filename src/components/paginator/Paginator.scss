@@ -1,38 +1,46 @@
 div {
   &.paginator {
+    width: 100%;
+    margin-top: 1rem;
     display: flex;
-    justify-content: space-around;
     align-items: baseline;
     ul {
-      padding: 0;
       width: 100%;
+      padding: 0;
       display: flex;
       justify-content: space-between;
       li {
-          display: inline;
-          list-style-type: none;
-          padding: .9rem;
-          border: 0.5px solid lightgray;
-          border-radius: .5rem;
+        button {
+          border: none;
+          background: none;
+          outline: none;
+        };
+        display: inline;
+        list-style-type: none;
+        padding: .9rem;
+        border: 0.5px solid lightgray;
+        border-radius: .5rem;
       }
     }
   
     @media (min-width: 600px) {
-      width: 25rem;
-      justify-content: space-between;
+      display: flex;
+      margin-top: 0;
+      justify-content: flex-end;
+      width: min-content;
+      height: 1.5rem;
       ul {
         margin: 0 1rem;
-        width: 65%;
-        flex-wrap: wrap;
-        flex-grow: 1;
+        width: min-content;
         li {
-          padding: .5rem 1.3rem;
+          // padding: .5rem 1.3rem;
           border: none;
-          &:hover {
+          &:hover, &:active {
             border: 0.5px solid lightgray;
             border-radius: .5rem;
             box-shadow: none;
             text-shadow: unset;
+            outline: 0px solid transparent;
             cursor: pointer;
           }
         }
@@ -42,6 +50,10 @@ div {
     > div {
       &.paginator__left-icons,
       &.paginator__right-icons {
+        &.disabled {
+          pointer-events: none;
+          opacity: 0.5;
+        }
         cursor: pointer;
         display: none;
         @media (min-width: 600px) {

@@ -9,7 +9,7 @@ export default class Footer extends Component {
     return (
       <footer>
         <SelectItemsPerPage notifyItemsPerPageChange={this.props.itemsPerPage} />
-        <Paginator /> 
+        <Paginator numberOfPages={this.props.numberOfPages} /> 
       </footer>
     );
   }
