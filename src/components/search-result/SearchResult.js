@@ -7,16 +7,22 @@ import Line from '../line/Line';
 export default class SearchResult extends Component {
 
   state = {
-    text: '{amount} produtos encontrados'
+    text: '{amount} produtos encontrados',
+    data: []
   };
+
+  componentWillReceiveProps({data}) {
+    this.setState({ data })
+  }
   
   render() {
+    const { text, data} = this.state;
     return (
       <div className="search-result-container">
         <div className="search-result__amount-items">
-          <Text text={this.state.text.toUpperCase()} />
+          <Text text={text.replace('{amount}', data.length).toUpperCase()} />
         </div>
-        <ProductList />
+        <ProductList productList={data} />
         <Line />
       </div>
     );

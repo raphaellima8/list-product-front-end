@@ -8,9 +8,9 @@ export default class Main extends Component {
   render() {
     return (
       <main>
-        <SectionHeader />
-        <SearchResult />
-        <Footer />
+        <SectionHeader newText={this.props.searchTerm}/>
+        <SearchResult data={this.props.searchResult}/>
+        <Footer itemsPerPage={this.props.updateItemsPerPage}/>
       </main>
     );
   }

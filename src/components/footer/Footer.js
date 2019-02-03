@@ -8,7 +8,7 @@ export default class Footer extends Component {
   render() {
     return (
       <footer>
-        <SelectItemsPerPage />
+        <SelectItemsPerPage notifyItemsPerPageChange={this.props.itemsPerPage} />
         <Paginator /> 
       </footer>
     );
