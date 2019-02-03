@@ -18,25 +18,25 @@ export default class App extends Component {
   };
 
   updateItemsPerPage = (items) => {
-    this.setState({ itemsPerPage: items });
+    // this.setState({ itemsPerPage: items });
     this.fetchData(items);
   }
   
   search = (term) => {
-    this.setState({ searchTerm: term });
+    // this.setState({ searchTerm: term });
     this.fetchData(this.state.itemsPerPage, null, term);
   }
   
-  async fetchData(items, page, term) {
+  async fetchData(itemsPerPage, page, searchTerm) {
     const abc = await axios.get('http://localhost:5000/api/v1/products', {
       params: {
-        search: term,
-        limit: items || this.state.itemsPerPage,
+        search: searchTerm,
+        limit: itemsPerPage || this.state.itemsPerPage,
         page: page || this.state.currentPage
       }
     });
-    const { pages, products } = abc.data;
-    this.setState({ pages, products });
+    const { pages, products, amountDocs } = abc.data;
+    this.setState({ pages, products, amountDocs, itemsPerPage, searchTerm });
   }
 
   render() {
@@ -45,8 +45,10 @@ export default class App extends Component {
         <Header search={this.search}/>
         <Main
           searchResult={this.state.products}
+          amountItems={this.state.amountDocs}
           searchTerm={this.state.searchTerm}
           updateItemsPerPage={this.updateItemsPerPage}
+          pages={this.state.pages}
         />
       </div>
     );

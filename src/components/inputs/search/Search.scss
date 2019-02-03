@@ -12,6 +12,7 @@
 
   form {
     &.search__form {
+      width: 100%;
       display: flex;
       align-items: baseline;
       
@@ -20,6 +21,7 @@
       }
     
       input[type="search"] {
+        width: 100%;
         border: 0;
         padding: 0.5rem 0.5rem 0.5rem 0;
         outline: none;

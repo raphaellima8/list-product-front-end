@@ -9,8 +9,8 @@ export default class Main extends Component {
     return (
       <main>
         <SectionHeader newText={this.props.searchTerm}/>
-        <SearchResult data={this.props.searchResult}/>
-        <Footer itemsPerPage={this.props.updateItemsPerPage}/>
+        <SearchResult amountItems={this.props.amountItems} data={this.props.searchResult}/>
+        <Footer numberOfPages={this.props.pages} itemsPerPage={this.props.updateItemsPerPage}/>
       </main>
     );
   }

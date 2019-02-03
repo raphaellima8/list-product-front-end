@@ -11,16 +11,16 @@ export default class SearchResult extends Component {
     data: []
   };
 
-  componentWillReceiveProps({data}) {
-    this.setState({ data })
+  componentWillReceiveProps({data, amountItems}) {
+    this.setState({ data, amountItems })
   }
   
   render() {
-    const { text, data} = this.state;
+    const { text, data, amountItems} = this.state;
     return (
       <div className="search-result-container">
         <div className="search-result__amount-items">
-          <Text text={text.replace('{amount}', data.length).toUpperCase()} />
+          <Text text={text.replace('{amount}', amountItems).toUpperCase()} />
         </div>
         <ProductList productList={data} />
         <Line />

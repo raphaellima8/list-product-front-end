@@ -4,26 +4,24 @@ import './SectionHeader.scss';
 export default class SectionHeader extends Component {
  
   state = {
-    defaultText: 'Lista de produtos',
-    title: ''
+    title: 'Lista de produtos'
   }
 
   componentWillReceiveProps(props) {
-    const { newText } = this.props;
-    if (props.newText !== newText) {
-      this.setState({ title: props.newText})
-    }
+    const title = (!props.newText || props.newText === '') ? 'Lista de produtos' : props.newText;
+    this.setState({ title });
   }
 
   renderText() {
     const { defaultText, title } = this.state;
-    return title === '' ? defaultText : title;
+    console.log(defaultText, title)
+    return !!title ? defaultText : title;
   }
 
   render() {
     return (
       <div className="section-header-container">
-        <h2>{ this.renderText() }</h2>
+        <h2>{ this.state.title }</h2>
       </div>
     );
   }
