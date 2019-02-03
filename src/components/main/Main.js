@@ -8,9 +8,18 @@ export default class Main extends Component {
   render() {
     return (
       <main>
-        <SectionHeader newText={this.props.searchTerm}/>
-        <SearchResult amountItems={this.props.amountItems} data={this.props.searchResult}/>
-        <Footer numberOfPages={this.props.pages} itemsPerPage={this.props.updateItemsPerPage}/>
+        <SectionHeader
+          newText={this.props.searchTerm}
+        />
+        <SearchResult
+          amountItems={this.props.amountItems}
+          data={this.props.searchResult}
+        />
+        <Footer
+          searchByPageFn={this.props.searchByPage}
+          numberOfPages={this.props.pages}
+          itemsPerPage={this.props.updateItemsPerPage}
+        />
       </main>
     );
   }

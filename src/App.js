@@ -26,6 +26,10 @@ export default class App extends Component {
     // this.setState({ searchTerm: term });
     this.fetchData(this.state.itemsPerPage, null, term);
   }
+
+  searchByPage = (pageNumber) => {
+    this.fetchData(this.state.itemsPerPage, pageNumber, this.state.searchTerm);
+  }
   
   async fetchData(itemsPerPage, page, searchTerm) {
     const abc = await axios.get('http://localhost:5000/api/v1/products', {
@@ -49,6 +53,7 @@ export default class App extends Component {
           searchTerm={this.state.searchTerm}
           updateItemsPerPage={this.updateItemsPerPage}
           pages={this.state.pages}
+          searchByPage={this.searchByPage}
         />
       </div>
     );
