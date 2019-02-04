@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 import './App.scss';
 import Header from './components/header/Header';
 import Main from './components/main/Main';
-
+import fetchData from './services/api';
 
 export default class App extends Component {
 
@@ -18,12 +17,10 @@ export default class App extends Component {
   };
 
   updateItemsPerPage = (items) => {
-    // this.setState({ itemsPerPage: items });
-    this.fetchData(items);
+    this.fetchData(items, 1, this.state.searchTerm);
   }
   
   search = (term) => {
-    // this.setState({ searchTerm: term });
     this.fetchData(this.state.itemsPerPage, null, term);
   }
 
@@ -31,16 +28,10 @@ export default class App extends Component {
     this.fetchData(this.state.itemsPerPage, pageNumber, this.state.searchTerm);
   }
   
-  async fetchData(itemsPerPage, page, searchTerm) {
-    const abc = await axios.get('http://localhost:5000/api/v1/products', {
-      params: {
-        search: searchTerm,
-        limit: itemsPerPage || this.state.itemsPerPage,
-        page: page || this.state.currentPage
-      }
-    });
-    const { pages, products, amountDocs } = abc.data;
-    this.setState({ pages, products, amountDocs, itemsPerPage, searchTerm });
+  async fetchData(limit, page, search) {
+    const result = await fetchData('api/v1/products', { search, limit, page });
+    const { pages, products, amountDocs } = result.data;
+    this.setState({ pages, products, amountDocs, itemsPerPage: limit, searchTerm: search });
   }
 
   render() {
