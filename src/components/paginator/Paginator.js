@@ -11,7 +11,8 @@ export default class Paginator extends Component {
   };
     
   componentWillReceiveProps({ numberOfPages }) {
-    this.setState({ numberOfPages });
+    const currentPage = numberOfPages !== this.state.numberOfPages ? 1 : this.state.currentPage;
+    this.setState({ numberOfPages, currentPage });
   }
 
   searchByPage = (pageNumber) => {
