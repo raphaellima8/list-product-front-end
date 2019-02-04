@@ -14,14 +14,14 @@ div {
           margin-right: 1rem;
         }
         padding: .9rem;
-        border: 0.5px solid lightgray;
+        border: 1px solid lightgray;
         border-radius: .5rem;
         background: transparent;
         outline: none;
         &.disabled {
           pointer-events: none;
           opacity: 0.5;
-          border: 0.5px solid lightgray;
+          border: 1px solid lightgray;
           border-radius: .5rem;
           outline: none;
           background: lightgray;
@@ -39,11 +39,11 @@ div {
         width: min-content;
         button {
           box-sizing: border-box;
-          border: none;
+          border: 1px solid white;
+          border-radius: .5rem;
+          outline: none;
           &:hover:not(.disabled) {
-            border: 0.5px solid lightgray;
-            border-radius: .5rem;
-            outline: none;
+            border-color: lightgray;
             cursor: pointer;
           }
           &.disabled {
