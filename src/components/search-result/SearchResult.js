@@ -17,10 +17,11 @@ export default class SearchResult extends Component {
   
   render() {
     const { text, data, amountItems} = this.state;
+    const amountFoundedItems = amountItems || 0;
     return (
       <div className="search-result-container">
         <div className="search-result__amount-items">
-          <Text text={text.replace('{amount}', amountItems).toUpperCase()} />
+          <Text text={text.replace('{amount}', amountFoundedItems).toUpperCase()} />
         </div>
         <ProductList productList={data} />
         <Line />
