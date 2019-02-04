@@ -9,11 +9,19 @@ export default class Search extends Component {
 
   onFormSubmit = (event) => {
     event.preventDefault();
-    this.props.searchFn(this.state.searchTerm);
+    this.sendSearchTerm(this.state.searchTerm);
   }
 
   onInputChange = (event) => {
-    this.setState({ searchTerm: event.target.value });
+    const { value } = event.target;
+    this.setState({ searchTerm: value });
+    if (value === '') {
+      this.sendSearchTerm(value);
+    }
+  }
+
+  sendSearchTerm(term) {
+    this.props.searchFn(term);
   }
 
   render() {
