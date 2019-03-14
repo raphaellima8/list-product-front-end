@@ -29,7 +29,7 @@ export default class App extends Component {
   }
   
   async fetchData(limit, page, search) {
-    const result = await fetchData('api/v1/products', { search, limit, page });
+    const result = await fetchData('api/v1/product/all', { search, limit, page });
     const { pages, products, amountDocs } = result.data;
     this.setState({ pages, products, amountDocs, itemsPerPage: limit, searchTerm: search });
   }
