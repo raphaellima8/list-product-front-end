@@ -13,9 +13,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start:prod": "npm run build && serve -s build",
+    "start:prod": "serve -s build",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage",
     "eject": "react-scripts eject",
     "release": "standard-version"
   },
