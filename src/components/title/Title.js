@@ -1,9 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Title.scss';
 
-export default class Title extends Component {
+const Title = props => <h1>{ props.text }</h1>;
 
-  render() {
-    return <h1>{ this.props.text }</h1>;
-  }
-}
+export default Title;

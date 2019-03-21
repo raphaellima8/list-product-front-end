@@ -1,18 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Gallery.scss';
 import Thumbnail from '../../../thumbnail/Thumbnail';
 
-export default class Gallery extends Component {
+const Gallery = props => (
+  <div className="gallery-container">
+    {parseItems(props)}
+  </div>
+);
 
-  parseItems() {
-    return this.props.imageList.map(image => <Thumbnail key={image.id} imgAddress={image.src} />);
-  }
-
-  render() {
-    return (
-      <div className="gallery-container">
-        {this.parseItems()}
-      </div>
-    );
-  }
+const parseItems = props => {
+  return props.imageList.map(image => <Thumbnail key={image.id} imgAddress={image.src} />);
 }
+export default Gallery;

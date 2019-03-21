@@ -1,22 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Logo.scss';
 import Title from '../title/Title';
-export default class Logo extends Component {
+const Logo = () => (
+  <div className="logo-container">
+    <a href="/">
+      <Title text='mmartan' />
+    </a>
+  </div>
+);
 
-  constructor() {
-    super();
-    this.state = {
-      title: 'mmartan'
-    }
-  }
-
-  render() {
-    return (
-      <div className="logo-container">
-        <a href="/">
-          <Title text={this.state.title} />
-        </a>
-      </div>
-    );
-  }
-}
+export default Logo;

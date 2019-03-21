@@ -1,18 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 import './SectionHeader.scss';
-
-class SectionHeader extends Component {
-
-  render() {
-    return (
-      <div className="section-header-container">
-        <h2>{ this.props.title }</h2>
-      </div>
-    );
-  }
-}
+const SectionHeader = props => (
+  <div className="section-header-container">
+    <h2>{ props.title }</h2>
+  </div>
+);
 
 const mapStateToProps = (state) => {
   return {

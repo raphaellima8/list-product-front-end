@@ -1,9 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Line.scss';
 
-export default class Line extends Component {
-  
-  render() {
-    return <hr />
-  }
-}
+const Line = () => <hr />;
+
+export default Line;
