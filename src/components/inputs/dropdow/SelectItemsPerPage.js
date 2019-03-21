@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchProducts, setItemsPerPage } from '../../../actions';
+
 import './SelectItemsPerPage.scss';
 
-export default class SelectItemsPerPage extends Component {
+const mapStateToProps = (state) => {
+  const { itemsPerPage } = state;
+  return { itemsPerPage: itemsPerPage || 5, text: 'produtos por página' };
+}
 
-  state = {
-    text: 'produtos por página',
-    optionValue: 5
-  }
+export class SelectItemsPerPage extends Component {
 
   constructor() {
     super();
@@ -14,28 +17,36 @@ export default class SelectItemsPerPage extends Component {
   }
 
   componentDidMount() {
-    this.props.notifyItemsPerPageChange(this.state.optionValue);
+    this.props.fetchProducts();
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const { optionValue } = prevState;
-    if (optionValue !== this.state.optionValue) {
-      this.props.notifyItemsPerPageChange(this.state.optionValue);
-    }
+  componentDidUpdate() {
+    const { setItemsPerPage, fetchProducts, itemsPerPage } = this.props;
+    setItemsPerPage(itemsPerPage);
+    fetchProducts();
   }
 
   optionSelected(event) {
     const { value } = event.target;
-    this.setState({ optionValue: value });
+    this.props.setItemsPerPage(Number(value));
   }
 
   render() {
+    const { text, itemsPerPage } = this.props;
     return (
-      <select onChange={this.optionSelected} value={this.state.optionValue}>
-        <option value="5">5 {this.state.text}</option>
-        <option value="10">10 {this.state.text}</option>
-        <option value="15">15 {this.state.text}</option>
+      <select onChange={this.optionSelected} value={itemsPerPage}>
+        <option value="5">5 {text}</option>
+        <option value="10">10 {text}</option>
+        <option value="15">15 {text}</option>
       </select>
     );
   }
 }
+
+export default connect(
+  mapStateToProps,
+  {
+    setItemsPerPage,
+    fetchProducts
+  }
+)(SelectItemsPerPage);

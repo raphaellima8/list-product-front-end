@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import ProductItem from './product-item/ProductItem';
+import { connect } from 'react-redux';
 
-export default class ProductList extends Component {
-
-  state = {
-    productList: []
+const mapStateToProps = (state) => {
+  return {
+    products: state.productsPage.products
   }
+}
 
-  componentWillReceiveProps({ productList }) {
-    this.setState({ productList })
-  }
+class ProductList extends Component {
 
   parseList() {
-    return this.state.productList.map(product => {
+    return this.props.products.map(product => {
       return <ProductItem key={product.productId} productItem={product} />;
     });
   }
@@ -25,3 +24,5 @@ export default class ProductList extends Component {
     );
   }
 }
+
+export default connect(mapStateToProps)(ProductList);
