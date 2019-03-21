@@ -1,31 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './ProductItem.scss';
 import Gallery from './gallery/Gallery';
 import Description from './description/Description';
 
-export default class ProductItem extends Component {
-  
-  render() {
-    const { productItem } = this.props;
-    const {
-      category,
-      name,
-      price,
-      promotionalPrice,
-      type,
-    } = productItem;
-    return (
-      <section className="product-container">
-        <Gallery imageList={productItem.images}/>
-        <Description
-          category={category}
-          name={name}
-          price={price}
-          promotionalPrice={promotionalPrice}
-          type={type}
-        />
-      </section>
-
-    );
-  }
+const ProductItem = props => {
+  const { productItem } = props;
+  return (
+    <section className="product-container">
+      <Gallery imageList={productItem.images}/>
+      <Description
+        category={productItem.category}
+        name={productItem.name}
+        price={productItem.price}
+        promotionalPrice={productItem.promotionalPrice}
+        type={productItem.type}
+      />
+    </section>
+  );
 }
+
+export default ProductItem;

@@ -1,10 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Thumbnail.scss';
 
-export default class Thumbnail extends Component {
-  render() {
-    return (
-      <img alt="img" src={this.props.imgAddress} />
-    );
-  }
-}
+const Thumbnail = props => <img alt="img" src={props.imgAddress} />;
+
+export default Thumbnail;

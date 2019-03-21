@@ -1,16 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Footer.scss';
 import SelectItemsPerPage from '../inputs/dropdow/SelectItemsPerPage';
 import Paginator from '../paginator/Paginator';
 
-export default class Footer extends Component {
+const Footer = () => (
+  <footer>
+    <SelectItemsPerPage />
+    <Paginator /> 
+  </footer>
+);
 
-  render() {
-    return (
-      <footer>
-        <SelectItemsPerPage />
-        <Paginator /> 
-      </footer>
-    );
-  }
-}
+export default Footer;
