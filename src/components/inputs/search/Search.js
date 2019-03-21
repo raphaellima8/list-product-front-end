@@ -1,27 +1,26 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchProducts, searchTerm } from '../../../actions';
+
 import './Search.scss';
 
-export default class Search extends Component {
+class Search extends Component {
 
-  state = {
-    searchTerm: ''
-  }
-
-  onFormSubmit = (event) => {
+  onFormSubmit = event => {
     event.preventDefault();
-    this.sendSearchTerm(this.state.searchTerm);
+    this.makeSearch();
   }
 
-  onInputChange = (event) => {
+  onInputChange = event => {
     const { value } = event.target;
-    this.setState({ searchTerm: value });
+    this.props.searchTerm(value);
     if (value === '') {
-      this.sendSearchTerm(value);
+      this.makeSearch();
     }
   }
 
-  sendSearchTerm(term) {
-    this.props.searchFn(term);
+  makeSearch() {
+    this.props.fetchProducts();
   }
 
   render() {
@@ -31,7 +30,7 @@ export default class Search extends Component {
           <i className="fa fa-search"></i>
           <input
             type="search"
-            value={this.state.searchTerm}
+            value={this.props.term}
             onChange={this.onInputChange}
             placeholder="Buscar produto" />
         </form>
@@ -39,3 +38,14 @@ export default class Search extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    term: state.searchTerm
+  }
+}
+
+export default connect(mapStateToProps, {
+  fetchProducts,
+  searchTerm
+})(Search);

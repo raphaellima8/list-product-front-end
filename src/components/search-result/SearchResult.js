@@ -1,31 +1,32 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import './SearchResult.scss';
 import ProductList from '../product-list/ProductList';
 import Text from '../text/Text';
 import Line from '../line/Line';
 
-export default class SearchResult extends Component {
-
-  state = {
-    text: '{amount} produtos encontrados',
-    data: []
+const mapStateToProps = (state) => {
+  return { 
+    amountDocs: state.productsPage.amountDocs,
+    text: '{amount} produtos encontrados'
   };
+}
 
-  componentWillReceiveProps({data, amountItems}) {
-    this.setState({ data, amountItems })
-  }
+class SearchResult extends Component {
   
   render() {
-    const { text, data, amountItems} = this.state;
-    const amountFoundedItems = amountItems || 0;
+    const { text, amountDocs } = this.props;
     return (
       <div className="search-result-container">
         <div className="search-result__amount-items">
-          <Text text={text.replace('{amount}', amountFoundedItems).toUpperCase()} />
+          <Text text={text.replace('{amount}', amountDocs).toUpperCase()} />
         </div>
-        <ProductList productList={data} />
+        <ProductList />
         <Line />
       </div>
     );
   }
 }
+
+export default connect(mapStateToProps)(SearchResult);

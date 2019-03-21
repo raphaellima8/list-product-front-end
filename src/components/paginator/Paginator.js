@@ -1,7 +1,27 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import {
+  fetchProducts,
+  currentPaginatorPage
+} from '../../actions';
 import './Paginator.scss';
 
-export default class Paginator extends Component {
+
+const mapStateToProps = state => {
+  return {
+    ...state.productsPage
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    nextPage: () => dispatch(fetchProducts()),
+    setPage: (pageNumber) => dispatch(currentPaginatorPage(pageNumber))
+  }
+}
+
+class Paginator extends Component {
 
   state = {
     disabled: 'disabled',
@@ -16,17 +36,18 @@ export default class Paginator extends Component {
     lastPage: 1
   };
     
-  componentWillReceiveProps({ numberOfPages }) {
+  componentWillReceiveProps({ pages }) {
+    const { currentPage, numberOfPages, maxItemsToShow } = this.state;
     let state = {
-      currentPage: this.state.currentPage,
-      numberOfPages,
-      lastPage: numberOfPages
+      currentPage,
+      numberOfPages: pages,
+      lastPage: pages
     };
-    if(numberOfPages !== this.state.numberOfPages) {
+    if(pages !== numberOfPages) {
       state = {
         ...state,
         currentPage: 1,
-        lastItem: numberOfPages < this.state.maxItemsToShow ? numberOfPages : 5,
+        lastItem: pages < maxItemsToShow ? pages : 5,
         firstItem: 1
       }
     }
@@ -34,10 +55,11 @@ export default class Paginator extends Component {
   }
 
   navigateTo = (pageNumber, direction) => {
+    this.props.setPage(Number(pageNumber));
     this.setState({ currentPage: Number(pageNumber) });
 
     this.updateNavigator(Number(pageNumber), direction);    
-    this.props.searchByPageFn(pageNumber);
+    this.props.nextPage();
   }
 
   getPreviousMultipleOfFive(num) {
@@ -112,9 +134,7 @@ export default class Paginator extends Component {
         key={id}
         data-id={id}
         onClick={this.onPageClick}
-      >
-          {id}
-      </button>
+      >{id}</button>
     );
   }
 
@@ -140,3 +160,5 @@ export default class Paginator extends Component {
     );
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Paginator);
