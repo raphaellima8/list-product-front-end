@@ -4,13 +4,12 @@ import { fetchProducts, setItemsPerPage } from '../../../actions';
 
 import './SelectItemsPerPage.scss';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const { itemsPerPage } = state;
   return { itemsPerPage: itemsPerPage || 5, text: 'produtos por página' };
-}
+};
 
 export class SelectItemsPerPage extends Component {
-
   constructor() {
     super();
     this.optionSelected = this.optionSelected.bind(this);
@@ -21,9 +20,9 @@ export class SelectItemsPerPage extends Component {
   }
 
   componentDidUpdate() {
-    const { setItemsPerPage, fetchProducts, itemsPerPage } = this.props;
-    setItemsPerPage(itemsPerPage);
-    fetchProducts();
+    const { itemsPerPage } = this.props;
+    this.props.setItemsPerPage(itemsPerPage);
+    this.props.fetchProducts();
   }
 
   optionSelected(event) {

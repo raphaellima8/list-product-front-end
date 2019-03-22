@@ -3,4 +3,4 @@ export const paginator = (pageNumber = 1, action) => {
     return action.payload;
   }
   return pageNumber;
-}
+};

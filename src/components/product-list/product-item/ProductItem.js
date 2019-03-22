@@ -7,7 +7,7 @@ const ProductItem = props => {
   const { productItem } = props;
   return (
     <section className="product-container">
-      <Gallery imageList={productItem.images}/>
+      <Gallery imageList={productItem.images} />
       <Description
         category={productItem.category}
         name={productItem.name}
@@ -17,6 +17,6 @@ const ProductItem = props => {
       />
     </section>
   );
-}
+};
 
 export default ProductItem;
