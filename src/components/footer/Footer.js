@@ -6,7 +6,7 @@ import Paginator from '../paginator/Paginator';
 const Footer = () => (
   <footer>
     <SelectItemsPerPage />
-    <Paginator /> 
+    <Paginator />
   </footer>
 );
 

@@ -5,11 +5,10 @@ import { fetchProducts, searchTerm } from '../../../actions';
 import './Search.scss';
 
 class Search extends Component {
-
   onFormSubmit = event => {
     event.preventDefault();
     this.makeSearch();
-  }
+  };
 
   onInputChange = event => {
     const { value } = event.target;
@@ -17,7 +16,7 @@ class Search extends Component {
     if (value === '') {
       this.makeSearch();
     }
-  }
+  };
 
   makeSearch() {
     this.props.fetchProducts();
@@ -27,12 +26,13 @@ class Search extends Component {
     return (
       <div className="search-container">
         <form className="search__form" onSubmit={this.onFormSubmit}>
-          <i className="fa fa-search"></i>
+          <i className="fa fa-search" />
           <input
             type="search"
             value={this.props.term}
             onChange={this.onInputChange}
-            placeholder="Buscar produto" />
+            placeholder="Buscar produto"
+          />
         </form>
       </div>
     );
@@ -42,10 +42,13 @@ class Search extends Component {
 const mapStateToProps = state => {
   return {
     term: state.searchTerm
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, {
-  fetchProducts,
-  searchTerm
-})(Search);
+export default connect(
+  mapStateToProps,
+  {
+    fetchProducts,
+    searchTerm
+  }
+)(Search);

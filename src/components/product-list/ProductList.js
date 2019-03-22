@@ -1,27 +1,23 @@
 import React, { Component } from 'react';
-import ProductItem from './product-item/ProductItem';
 import { connect } from 'react-redux';
+import ProductItem from './product-item/ProductItem';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     products: state.productsPage.products
-  }
-}
+  };
+};
 
 class ProductList extends Component {
-
   parseList() {
-    return this.props.products.map(product => {
+    const { products } = this.props;
+    return (products || []).map(product => {
       return <ProductItem key={product.productId} productItem={product} />;
     });
   }
 
   render() {
-    return (
-      <div>
-        {this.parseList()}
-      </div>
-    );
+    return <div>{this.parseList()}</div>;
   }
 }
 
